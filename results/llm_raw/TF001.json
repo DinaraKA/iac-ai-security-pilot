@@ -1,0 +1,23 @@
+{
+  "case_id": "TF001",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-15T20:08:21.745767+00:00",
+  "response_id": "msg_011Cg4dMD8bx1nrEVc568cCD",
+  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"SSH port open to all IPs\",\n      \"evidence\": \"from_port = 22, to_port = 22, protocol = \\\"tcp\\\", cidr_blocks = [\\\"0.0.0.0/0\\\"]\",\n      \"severity\": \"critical\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"issue\": \"Unrestricted egress traffic\",\n      \"evidence\": \"egress { from_port = 0, to_port = 0, protocol = \\\"-1\\\", cidr_blocks = [\\\"0.0.0.0/0\\\"] }\",\n      \"severity\": \"medium\",\n      \"confidence\": \"high\"\n    }\n  ]\n}\n```",
+  "parsed_response": {
+    "findings": [
+      {
+        "issue": "SSH port open to all IPs",
+        "evidence": "from_port = 22, to_port = 22, protocol = \"tcp\", cidr_blocks = [\"0.0.0.0/0\"]",
+        "severity": "critical",
+        "confidence": "high"
+      },
+      {
+        "issue": "Unrestricted egress traffic",
+        "evidence": "egress { from_port = 0, to_port = 0, protocol = \"-1\", cidr_blocks = [\"0.0.0.0/0\"] }",
+        "severity": "medium",
+        "confidence": "high"
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "case_id": "K8S001",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-15T20:23:17.477934+00:00",
+  "response_id": "msg_011Cg4eVJgp11FjaFg5JeT8d",
+  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"Privileged container\",\n      \"evidence\": \"securityContext.privileged: true\",\n      \"severity\": \"critical\",\n      \"confidence\": \"high\"\n    }\n  ]\n}\n```",
+  "parsed_response": {
+    "findings": [
+      {
+        "issue": "Privileged container",
+        "evidence": "securityContext.privileged: true",
+        "severity": "critical",
+        "confidence": "high"
+      }
+    ]
+  }
+}

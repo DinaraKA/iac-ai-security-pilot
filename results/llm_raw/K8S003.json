@@ -1,0 +1,23 @@
+{
+  "case_id": "K8S003",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-15T20:23:25.387227+00:00",
+  "response_id": "msg_011Cg4eVf5uZHnQFAqymquGD",
+  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"Missing resource limits/requests\",\n      \"evidence\": \"no 'resources' field defined under container 'app'\",\n      \"severity\": \"low\",\n      \"confidence\": \"medium\"\n    },\n    {\n      \"issue\": \"No explicit seccomp profile configured\",\n      \"evidence\": \"securityContext does not include 'seccompProfile'\",\n      \"severity\": \"low\",\n      \"confidence\": \"medium\"\n    }\n  ]\n}\n```",
+  "parsed_response": {
+    "findings": [
+      {
+        "issue": "Missing resource limits/requests",
+        "evidence": "no 'resources' field defined under container 'app'",
+        "severity": "low",
+        "confidence": "medium"
+      },
+      {
+        "issue": "No explicit seccomp profile configured",
+        "evidence": "securityContext does not include 'seccompProfile'",
+        "severity": "low",
+        "confidence": "medium"
+      }
+    ]
+  }
+}

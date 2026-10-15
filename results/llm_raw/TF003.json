@@ -1,0 +1,17 @@
+{
+  "case_id": "TF003",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-15T20:23:15.692556+00:00",
+  "response_id": "msg_011Cg4eUe7q2cqEfacrTFfiS",
+  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"Unrestricted outbound traffic (all ports/protocols)\",\n      \"evidence\": \"egress { from_port = 0, to_port = 0, protocol = \\\"-1\\\", cidr_blocks = [\\\"0.0.0.0/0\\\"] }\",\n      \"severity\": \"medium\",\n      \"confidence\": \"high\"\n    }\n  ]\n}\n```",
+  "parsed_response": {
+    "findings": [
+      {
+        "issue": "Unrestricted outbound traffic (all ports/protocols)",
+        "evidence": "egress { from_port = 0, to_port = 0, protocol = \"-1\", cidr_blocks = [\"0.0.0.0/0\"] }",
+        "severity": "medium",
+        "confidence": "high"
+      }
+    ]
+  }
+}

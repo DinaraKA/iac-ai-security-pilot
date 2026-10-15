@@ -1,0 +1,7 @@
+case_id,file,framework,expected_issue,vulnerable,notes
+TF001,dataset/examples/tf/tf001_open_sg.tf,terraform,Ingress allows all IPv4 sources on SSH port 22,1,Target issue: unrestricted SSH ingress
+TF002,dataset/examples/tf/tf002_public_s3.tf,terraform,S3 public-access-block protections are disabled,1,Target issue: public access protections explicitly disabled
+TF003,dataset/examples/tf/tf003_secure_sg.tf,terraform,SSH ingress is restricted to a single IPv4 address,0,Negative control for unrestricted SSH ingress
+K8S001,dataset/examples/k8s/k8s001_privileged.yaml,kubernetes,Container runs privileged,1,Target issue: privileged container
+K8S002,dataset/examples/k8s/k8s002_root.yaml,kubernetes,Container explicitly runs as root,1,Target issue: container runs as UID 0
+K8S003,dataset/examples/k8s/k8s003_secure.yaml,kubernetes,No targeted privileged-container or root-container issue is present,0,Negative control for container privilege and root execution

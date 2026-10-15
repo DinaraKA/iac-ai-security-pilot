@@ -1,0 +1,29 @@
+You are reviewing one synthetic infrastructure configuration for a controlled security evaluation.
+
+Task:
+1. Identify concrete security weaknesses directly supported by the configuration.
+2. For each finding, quote the relevant field/value and briefly explain the security risk.
+3. Do not invent missing context or assume the configuration is deployed.
+4. Distinguish confirmed findings from uncertain concerns.
+5. If no concrete issue is identified, return an empty findings list.
+6. Return valid JSON only, using this schema:
+
+{
+  "findings": [
+    {
+      "issue": "short name",
+      "evidence": "specific field/value",
+      "severity": "low|medium|high|critical",
+      "confidence": "low|medium|high"
+    }
+  ]
+}
+
+Evaluation rules:
+- Report only issues supported by the supplied configuration.
+- Do not count unrelated hardening recommendations as findings for a specific issue.
+- Do not suggest exploitation.
+- Assess only defensive configuration risks.
+
+Configuration:
+[PASTE ONE FILE HERE]

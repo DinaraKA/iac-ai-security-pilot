@@ -1,0 +1,7 @@
+case_id,checkov_detected,llm_detected
+TF001,,
+TF002,,
+TF003,,
+K8S001,,
+K8S002,,
+K8S003,,

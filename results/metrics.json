@@ -1,0 +1,28 @@
+{
+  "warning": "Pilot dataset only; interpret metrics cautiously.",
+  "n_labeled": 6,
+  "methods": {
+    "checkov_detected": {
+      "n_scored": 6,
+      "tp": 4,
+      "fp": 0,
+      "fn": 0,
+      "tn": 2,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "n_excluded": 0
+    },
+    "llm_detected": {
+      "n_scored": 6,
+      "tp": 4,
+      "fp": 0,
+      "fn": 0,
+      "tn": 2,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "n_excluded": 0
+    }
+  }
+}

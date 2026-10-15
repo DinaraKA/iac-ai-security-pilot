@@ -1,0 +1,29 @@
+{
+  "case_id": "TF002",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-15T20:23:06.897050+00:00",
+  "response_id": "msg_011Cg4eUSDihp3Exg21qYUcz",
+  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"S3 bucket public access block fully disabled\",\n      \"evidence\": \"block_public_acls = false, block_public_policy = false, ignore_public_acls = false, restrict_public_buckets = false\",\n      \"severity\": \"high\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"issue\": \"No bucket encryption configuration present\",\n      \"evidence\": \"aws_s3_bucket.example resource contains no server_side_encryption_configuration block\",\n      \"severity\": \"medium\",\n      \"confidence\": \"low\"\n    },\n    {\n      \"issue\": \"No bucket versioning configuration present\",\n      \"evidence\": \"aws_s3_bucket.example resource contains no versioning block\",\n      \"severity\": \"low\",\n      \"confidence\": \"low\"\n    }\n  ]\n}\n```",
+  "parsed_response": {
+    "findings": [
+      {
+        "issue": "S3 bucket public access block fully disabled",
+        "evidence": "block_public_acls = false, block_public_policy = false, ignore_public_acls = false, restrict_public_buckets = false",
+        "severity": "high",
+        "confidence": "high"
+      },
+      {
+        "issue": "No bucket encryption configuration present",
+        "evidence": "aws_s3_bucket.example resource contains no server_side_encryption_configuration block",
+        "severity": "medium",
+        "confidence": "low"
+      },
+      {
+        "issue": "No bucket versioning configuration present",
+        "evidence": "aws_s3_bucket.example resource contains no versioning block",
+        "severity": "low",
+        "confidence": "low"
+      }
+    ]
+  }
+}
