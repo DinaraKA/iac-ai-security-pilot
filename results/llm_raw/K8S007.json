@@ -1,0 +1,17 @@
+{
+  "case_id": "K8S007",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-17T19:16:30.600640+00:00",
+  "response_id": "msg_011Cg8M1kFDhPrFhs4eYhF2D",
+  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"Dangerous Linux capability added\",\n      \"evidence\": \"capabilities.add: SYS_ADMIN\",\n      \"severity\": \"high\",\n      \"confidence\": \"high\"\n    }\n  ]\n}\n```",
+  "parsed_response": {
+    "findings": [
+      {
+        "issue": "Dangerous Linux capability added",
+        "evidence": "capabilities.add: SYS_ADMIN",
+        "severity": "high",
+        "confidence": "high"
+      }
+    ]
+  }
+}

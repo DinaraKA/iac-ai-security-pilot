@@ -1,0 +1,17 @@
+{
+  "case_id": "K8S012",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-17T19:17:02.108773+00:00",
+  "response_id": "msg_011Cg8M3ovn3FQXXMu1Bticp",
+  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"No seccomp profile defined\",\n      \"evidence\": \"No 'seccompProfile' field is set under securityContext\",\n      \"severity\": \"low\",\n      \"confidence\": \"medium\"\n    }\n  ]\n}\n```",
+  "parsed_response": {
+    "findings": [
+      {
+        "issue": "No seccomp profile defined",
+        "evidence": "No 'seccompProfile' field is set under securityContext",
+        "severity": "low",
+        "confidence": "medium"
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "case_id": "K8S004",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-17T19:16:14.996421+00:00",
+  "response_id": "msg_011Cg8LzCaSP2hNFMk26xKqy",
+  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"No explicit seccomp profile configured\",\n      \"evidence\": \"securityContext does not include a 'seccompProfile' field\",\n      \"severity\": \"low\",\n      \"confidence\": \"medium\"\n    },\n    {\n      \"issue\": \"No resource requests/limits defined\",\n      \"evidence\": \"Pod spec lacks 'resources' (requests/limits) for container 'app'\",\n      \"severity\": \"low\",\n      \"confidence\": \"medium\"\n    }\n  ]\n}\n```",
+  "parsed_response": {
+    "findings": [
+      {
+        "issue": "No explicit seccomp profile configured",
+        "evidence": "securityContext does not include a 'seccompProfile' field",
+        "severity": "low",
+        "confidence": "medium"
+      },
+      {
+        "issue": "No resource requests/limits defined",
+        "evidence": "Pod spec lacks 'resources' (requests/limits) for container 'app'",
+        "severity": "low",
+        "confidence": "medium"
+      }
+    ]
+  }
+}

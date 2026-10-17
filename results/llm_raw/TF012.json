@@ -1,0 +1,41 @@
+{
+  "case_id": "TF012",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-17T19:16:07.880574+00:00",
+  "response_id": "msg_011Cg8LyDB8AiRCWQRkjLzB1",
+  "response_text": "{\n  \"findings\": [\n    {\n      \"issue\": \"No final snapshot on deletion\",\n      \"evidence\": \"skip_final_snapshot = true\",\n      \"severity\": \"medium\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"issue\": \"Deletion protection not enabled\",\n      \"evidence\": \"deletion_protection attribute is absent (defaults to false)\",\n      \"severity\": \"medium\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"issue\": \"Automated backups not configured\",\n      \"evidence\": \"backup_retention_period attribute is absent (defaults to 0, disabling automated backups)\",\n      \"severity\": \"medium\",\n      \"confidence\": \"medium\"\n    },\n    {\n      \"issue\": \"No explicit network access control defined\",\n      \"evidence\": \"vpc_security_group_ids / security_group_names not specified, instance will use default VPC security group\",\n      \"severity\": \"low\",\n      \"confidence\": \"low\"\n    },\n    {\n      \"issue\": \"Engine version not pinned\",\n      \"evidence\": \"engine = \\\"mysql\\\" specified without engine_version, allowing unreviewed version changes\",\n      \"severity\": \"low\",\n      \"confidence\": \"low\"\n    }\n  ]\n}",
+  "parsed_response": {
+    "findings": [
+      {
+        "issue": "No final snapshot on deletion",
+        "evidence": "skip_final_snapshot = true",
+        "severity": "medium",
+        "confidence": "high"
+      },
+      {
+        "issue": "Deletion protection not enabled",
+        "evidence": "deletion_protection attribute is absent (defaults to false)",
+        "severity": "medium",
+        "confidence": "high"
+      },
+      {
+        "issue": "Automated backups not configured",
+        "evidence": "backup_retention_period attribute is absent (defaults to 0, disabling automated backups)",
+        "severity": "medium",
+        "confidence": "medium"
+      },
+      {
+        "issue": "No explicit network access control defined",
+        "evidence": "vpc_security_group_ids / security_group_names not specified, instance will use default VPC security group",
+        "severity": "low",
+        "confidence": "low"
+      },
+      {
+        "issue": "Engine version not pinned",
+        "evidence": "engine = \"mysql\" specified without engine_version, allowing unreviewed version changes",
+        "severity": "low",
+        "confidence": "low"
+      }
+    ]
+  }
+}

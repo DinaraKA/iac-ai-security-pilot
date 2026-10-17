@@ -1,0 +1,29 @@
+{
+  "case_id": "TF011",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-17T19:15:54.432847+00:00",
+  "response_id": "msg_011Cg8LxSZm5uNjRAtYRLhMX",
+  "response_text": "{\n  \"findings\": [\n    {\n      \"issue\": \"Unencrypted database storage\",\n      \"evidence\": \"storage_encrypted = false\",\n      \"severity\": \"high\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"issue\": \"No final snapshot on deletion\",\n      \"evidence\": \"skip_final_snapshot = true\",\n      \"severity\": \"medium\",\n      \"confidence\": \"medium\"\n    },\n    {\n      \"issue\": \"No deletion protection configured\",\n      \"evidence\": \"deletion_protection attribute not set in aws_db_instance resource\",\n      \"severity\": \"low\",\n      \"confidence\": \"low\"\n    }\n  ]\n}",
+  "parsed_response": {
+    "findings": [
+      {
+        "issue": "Unencrypted database storage",
+        "evidence": "storage_encrypted = false",
+        "severity": "high",
+        "confidence": "high"
+      },
+      {
+        "issue": "No final snapshot on deletion",
+        "evidence": "skip_final_snapshot = true",
+        "severity": "medium",
+        "confidence": "medium"
+      },
+      {
+        "issue": "No deletion protection configured",
+        "evidence": "deletion_protection attribute not set in aws_db_instance resource",
+        "severity": "low",
+        "confidence": "low"
+      }
+    ]
+  }
+}

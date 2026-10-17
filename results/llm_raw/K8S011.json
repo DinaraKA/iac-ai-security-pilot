@@ -1,0 +1,17 @@
+{
+  "case_id": "K8S011",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-17T19:16:56.825637+00:00",
+  "response_id": "msg_011Cg8M3fGdBkTQdgDCAMwMA",
+  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"Writable root filesystem\",\n      \"evidence\": \"readOnlyRootFilesystem: false\",\n      \"severity\": \"low\",\n      \"confidence\": \"high\"\n    }\n  ]\n}\n```",
+  "parsed_response": {
+    "findings": [
+      {
+        "issue": "Writable root filesystem",
+        "evidence": "readOnlyRootFilesystem: false",
+        "severity": "low",
+        "confidence": "high"
+      }
+    ]
+  }
+}

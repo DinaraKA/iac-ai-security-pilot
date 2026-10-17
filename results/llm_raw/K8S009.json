@@ -1,0 +1,17 @@
+{
+  "case_id": "K8S009",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-17T19:16:46.030045+00:00",
+  "response_id": "msg_011Cg8M2ttu7rovuVxqosvLW",
+  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"Privilege escalation not restricted\",\n      \"evidence\": \"allowPrivilegeEscalation: true\",\n      \"severity\": \"medium\",\n      \"confidence\": \"high\"\n    }\n  ]\n}\n```",
+  "parsed_response": {
+    "findings": [
+      {
+        "issue": "Privilege escalation not restricted",
+        "evidence": "allowPrivilegeEscalation: true",
+        "severity": "medium",
+        "confidence": "high"
+      }
+    ]
+  }
+}

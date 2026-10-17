@@ -1,0 +1,17 @@
+{
+  "case_id": "TF005",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-17T19:11:01.204101+00:00",
+  "response_id": "msg_011Cg8LbVSZPD1Y6qw44462e",
+  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"EBS volume encryption disabled\",\n      \"evidence\": \"encrypted = false\",\n      \"severity\": \"high\",\n      \"confidence\": \"high\"\n    }\n  ]\n}\n```",
+  "parsed_response": {
+    "findings": [
+      {
+        "issue": "EBS volume encryption disabled",
+        "evidence": "encrypted = false",
+        "severity": "high",
+        "confidence": "high"
+      }
+    ]
+  }
+}

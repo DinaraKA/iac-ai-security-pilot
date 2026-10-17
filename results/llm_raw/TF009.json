@@ -1,0 +1,17 @@
+{
+  "case_id": "TF009",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-17T19:11:20.437425+00:00",
+  "response_id": "msg_011Cg8LcpYnzoMumUxymwcQo",
+  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"Publicly readable S3 bucket objects\",\n      \"evidence\": \"Principal = \\\"*\\\" with Effect = \\\"Allow\\\" and Action = [\\\"s3:GetObject\\\"] on Resource \\\"arn:aws:s3:::example-public-policy-bucket/*\\\"\",\n      \"severity\": \"high\",\n      \"confidence\": \"high\"\n    }\n  ]\n}\n```",
+  "parsed_response": {
+    "findings": [
+      {
+        "issue": "Publicly readable S3 bucket objects",
+        "evidence": "Principal = \"*\" with Effect = \"Allow\" and Action = [\"s3:GetObject\"] on Resource \"arn:aws:s3:::example-public-policy-bucket/*\"",
+        "severity": "high",
+        "confidence": "high"
+      }
+    ]
+  }
+}

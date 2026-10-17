@@ -136,7 +136,7 @@ def main():
 
         response = client.messages.create(
             model=MODEL,
-            max_tokens=800,
+            max_tokens=1600,
             messages=[{"role": "user", "content": prompt}],
         )
 

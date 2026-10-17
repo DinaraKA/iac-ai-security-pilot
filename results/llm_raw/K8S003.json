@@ -1,20 +1,26 @@
 {
   "case_id": "K8S003",
   "model": "claude-sonnet-5",
-  "timestamp_utc": "2026-10-15T20:23:25.387227+00:00",
-  "response_id": "msg_011Cg4eVf5uZHnQFAqymquGD",
-  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"Missing resource limits/requests\",\n      \"evidence\": \"no 'resources' field defined under container 'app'\",\n      \"severity\": \"low\",\n      \"confidence\": \"medium\"\n    },\n    {\n      \"issue\": \"No explicit seccomp profile configured\",\n      \"evidence\": \"securityContext does not include 'seccompProfile'\",\n      \"severity\": \"low\",\n      \"confidence\": \"medium\"\n    }\n  ]\n}\n```",
+  "timestamp_utc": "2026-10-17T19:48:52.896356+00:00",
+  "response_id": "msg_011Cg8PUa9EcNMfSnVgdxUSv",
+  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"Mutable image tag used instead of digest\",\n      \"evidence\": \"image: nginx:1.27\",\n      \"severity\": \"low\",\n      \"confidence\": \"medium\"\n    },\n    {\n      \"issue\": \"No seccomp profile explicitly defined\",\n      \"evidence\": \"securityContext block does not include a 'seccompProfile' field\",\n      \"severity\": \"low\",\n      \"confidence\": \"medium\"\n    },\n    {\n      \"issue\": \"No resource limits/requests defined\",\n      \"evidence\": \"containers[0] has no 'resources' field specified\",\n      \"severity\": \"low\",\n      \"confidence\": \"medium\"\n    }\n  ]\n}\n```",
   "parsed_response": {
     "findings": [
       {
-        "issue": "Missing resource limits/requests",
-        "evidence": "no 'resources' field defined under container 'app'",
+        "issue": "Mutable image tag used instead of digest",
+        "evidence": "image: nginx:1.27",
         "severity": "low",
         "confidence": "medium"
       },
       {
-        "issue": "No explicit seccomp profile configured",
-        "evidence": "securityContext does not include 'seccompProfile'",
+        "issue": "No seccomp profile explicitly defined",
+        "evidence": "securityContext block does not include a 'seccompProfile' field",
+        "severity": "low",
+        "confidence": "medium"
+      },
+      {
+        "issue": "No resource limits/requests defined",
+        "evidence": "containers[0] has no 'resources' field specified",
         "severity": "low",
         "confidence": "medium"
       }

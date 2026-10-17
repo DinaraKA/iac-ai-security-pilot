@@ -1,0 +1,17 @@
+{
+  "case_id": "TF010",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-17T19:13:34.807581+00:00",
+  "response_id": "msg_011Cg8LnHYFukabRSUN9G5hY",
+  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"No enforcement of encrypted transport (SSL/TLS) for S3 access\",\n      \"evidence\": \"Statement has no Condition block (e.g., 'aws:SecureTransport': 'false' deny clause) restricting s3:GetObject to HTTPS requests\",\n      \"severity\": \"medium\",\n      \"confidence\": \"medium\"\n    }\n  ]\n}\n```",
+  "parsed_response": {
+    "findings": [
+      {
+        "issue": "No enforcement of encrypted transport (SSL/TLS) for S3 access",
+        "evidence": "Statement has no Condition block (e.g., 'aws:SecureTransport': 'false' deny clause) restricting s3:GetObject to HTTPS requests",
+        "severity": "medium",
+        "confidence": "medium"
+      }
+    ]
+  }
+}

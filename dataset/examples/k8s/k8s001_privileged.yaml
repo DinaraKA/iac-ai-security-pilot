@@ -3,8 +3,16 @@ kind: Pod
 metadata:
   name: synthetic-privileged-test
 spec:
+  hostNetwork: false
   containers:
     - name: app
       image: nginx:1.27
       securityContext:
         privileged: true
+        runAsUser: 10001
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true
+        capabilities:
+          drop:
+            - ALL

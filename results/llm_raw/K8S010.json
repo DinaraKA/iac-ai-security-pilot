@@ -1,0 +1,29 @@
+{
+  "case_id": "K8S010",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-17T19:16:54.732709+00:00",
+  "response_id": "msg_011Cg8M31pNRXFgMWD4vRnZp",
+  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"Missing explicit seccomp profile\",\n      \"evidence\": \"No 'seccompProfile' field defined under securityContext\",\n      \"severity\": \"low\",\n      \"confidence\": \"medium\"\n    },\n    {\n      \"issue\": \"No resource limits/requests defined\",\n      \"evidence\": \"Pod spec lacks 'resources' field for the 'app' container\",\n      \"severity\": \"low\",\n      \"confidence\": \"medium\"\n    },\n    {\n      \"issue\": \"Mutable image tag used instead of digest pinning\",\n      \"evidence\": \"image: nginx:1.27\",\n      \"severity\": \"low\",\n      \"confidence\": \"low\"\n    }\n  ]\n}\n```",
+  "parsed_response": {
+    "findings": [
+      {
+        "issue": "Missing explicit seccomp profile",
+        "evidence": "No 'seccompProfile' field defined under securityContext",
+        "severity": "low",
+        "confidence": "medium"
+      },
+      {
+        "issue": "No resource limits/requests defined",
+        "evidence": "Pod spec lacks 'resources' field for the 'app' container",
+        "severity": "low",
+        "confidence": "medium"
+      },
+      {
+        "issue": "Mutable image tag used instead of digest pinning",
+        "evidence": "image: nginx:1.27",
+        "severity": "low",
+        "confidence": "low"
+      }
+    ]
+  }
+}

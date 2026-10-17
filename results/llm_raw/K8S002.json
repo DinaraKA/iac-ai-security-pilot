@@ -1,21 +1,21 @@
 {
   "case_id": "K8S002",
   "model": "claude-sonnet-5",
-  "timestamp_utc": "2026-10-15T20:23:20.687372+00:00",
-  "response_id": "msg_011Cg4eVRRNjV1FYX1uTa6tR",
-  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"Container running as root user\",\n      \"evidence\": \"runAsUser: 0\",\n      \"severity\": \"high\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"issue\": \"Privilege escalation permitted\",\n      \"evidence\": \"allowPrivilegeEscalation: true\",\n      \"severity\": \"high\",\n      \"confidence\": \"high\"\n    }\n  ]\n}\n```",
+  "timestamp_utc": "2026-10-17T19:48:56.167484+00:00",
+  "response_id": "msg_011Cg8PV4RqkQTc5upSGEysm",
+  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"Container configured to run as root user\",\n      \"evidence\": \"runAsUser: 0\",\n      \"severity\": \"medium\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"issue\": \"Root execution not blocked by policy\",\n      \"evidence\": \"runAsNonRoot: false\",\n      \"severity\": \"medium\",\n      \"confidence\": \"high\"\n    }\n  ]\n}\n```",
   "parsed_response": {
     "findings": [
       {
-        "issue": "Container running as root user",
+        "issue": "Container configured to run as root user",
         "evidence": "runAsUser: 0",
-        "severity": "high",
+        "severity": "medium",
         "confidence": "high"
       },
       {
-        "issue": "Privilege escalation permitted",
-        "evidence": "allowPrivilegeEscalation: true",
-        "severity": "high",
+        "issue": "Root execution not blocked by policy",
+        "evidence": "runAsNonRoot: false",
+        "severity": "medium",
         "confidence": "high"
       }
     ]

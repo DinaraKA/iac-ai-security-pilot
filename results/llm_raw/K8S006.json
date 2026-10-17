@@ -1,0 +1,29 @@
+{
+  "case_id": "K8S006",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-17T19:16:28.822631+00:00",
+  "response_id": "msg_011Cg8M18KjeryCLT1Sdmm8o",
+  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"No seccomp profile explicitly defined\",\n      \"evidence\": \"securityContext does not include a 'seccompProfile' field\",\n      \"severity\": \"low\",\n      \"confidence\": \"medium\"\n    },\n    {\n      \"issue\": \"No CPU/memory resource limits or requests specified\",\n      \"evidence\": \"Container spec for 'app' lacks a 'resources' block\",\n      \"severity\": \"medium\",\n      \"confidence\": \"medium\"\n    },\n    {\n      \"issue\": \"Mutable image tag used instead of immutable digest\",\n      \"evidence\": \"image: nginx:1.27\",\n      \"severity\": \"low\",\n      \"confidence\": \"low\"\n    }\n  ]\n}\n```",
+  "parsed_response": {
+    "findings": [
+      {
+        "issue": "No seccomp profile explicitly defined",
+        "evidence": "securityContext does not include a 'seccompProfile' field",
+        "severity": "low",
+        "confidence": "medium"
+      },
+      {
+        "issue": "No CPU/memory resource limits or requests specified",
+        "evidence": "Container spec for 'app' lacks a 'resources' block",
+        "severity": "medium",
+        "confidence": "medium"
+      },
+      {
+        "issue": "Mutable image tag used instead of immutable digest",
+        "evidence": "image: nginx:1.27",
+        "severity": "low",
+        "confidence": "low"
+      }
+    ]
+  }
+}

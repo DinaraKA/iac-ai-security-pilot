@@ -1,34 +1,48 @@
 # IaC AI Security Pilot
 
-A small empirical pilot comparing Checkov static analysis with an LLM's security review of synthetic Terraform and Kubernetes configurations.
+An empirical pilot comparing Checkov static analysis with an LLM-based security review of synthetic Terraform and Kubernetes configurations.
 
-## Research question
+## Research Question
 
-Can an LLM identify predefined Infrastructure-as-Code security issues, and how do its results compare with Checkov on the same labeled examples?
+Can an LLM identify predefined Infrastructure-as-Code (IaC) security issues, and how do its results compare with Checkov on the same labeled examples?
 
-## Scope and safety
+## Dataset and Scope
 
-- Six synthetic examples: three Terraform and three Kubernetes.
-- Four positive cases and two target-negative controls.
-- No production infrastructure, cloud credentials, or customer data.
-- Results are preliminary and are not a general benchmark.
+- 24 synthetic cases: 12 Terraform and 12 Kubernetes.
+- 12 positive cases containing predefined target issues and 12 target-negative controls.
+- 12 target issue categories, each represented by a positive case and a paired negative control.
+- No production infrastructure, customer data, or cloud credentials are included in the dataset.
+- Results are exploratory and are not a general security benchmark.
 
-## Repository layout
+## Methods
 
-- `dataset/` — synthetic configurations and ground-truth labels.
+- **Static analysis:** Checkov.
+- **LLM review:** Claude Sonnet 5, with one configuration per request.
+- **Scoring:** Target-specific binary predictions. Unrelated findings do not count as detections of the predefined target issue.
+- **Metrics:** Precision, recall, F1 score, true positives, false positives, false negatives, and true negatives.
+
+The S3 public-access-block case tests disabled protections. This condition alone does not prove that a bucket is publicly accessible.
+
+## Repository Structure
+
+- `dataset/examples/` — synthetic Terraform and Kubernetes configurations.
+- `dataset/labels.csv` — case labels and predefined target issues.
 - `prompts/llm_review.txt` — standardized LLM review prompt.
-- `scripts/run_llm_evaluation.py` — runs the LLM evaluation and saves raw responses.
-- `scripts/evaluate.py` — calculates target-specific evaluation metrics.
-- `tests/` — automated tests.
+- `scripts/run_llm_evaluation.py` — runs the LLM review and saves raw responses.
+- `scripts/extract_llm_predictions.py` — extracts target-specific LLM predictions.
+- `scripts/evaluate.py` — calculates evaluation metrics.
 - `results/llm_raw/` — raw LLM responses.
-- `results/predictions.csv` — manually reviewed binary predictions.
-- `results/metrics.json` — calculated metrics.
-- `results/notes.md` — methodology, observations, and limitations.
-- `results/checkov/` — saved Checkov output.
+- `results/checkov_v2/results_json.json` — saved Checkov scan output.
+- `results/checkov_predictions.csv` — target-specific Checkov predictions.
+- `results/llm_predictions.csv` — target-specific LLM predictions.
+- `results/predictions_final.csv` — combined predictions used for metric calculation.
+- `results/metrics_final.json` — calculated metrics.
+- `results/notes.md` — methodology, results, observations, and limitations.
+- `tests/` — automated tests.
 
 ## Setup
 
-Tested on macOS with Python and a virtual environment.
+Tested on macOS with Python 3.12 and a virtual environment.
 
 ```bash
 python3 -m venv .venv
@@ -37,73 +51,70 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-Install Checkov if needed:
+Install Checkov if it is not already installed:
 
 ```bash
 python -m pip install checkov
 ```
 
-Run the baseline scan:
+## Run the Evaluation
 
-```bash
-checkov -d dataset/examples --framework terraform,kubernetes --output cli
-```
+Set `ANTHROPIC_API_KEY` in your terminal environment before running the LLM evaluation. Never commit API keys or other secrets.
 
-## Run the evaluation
-
-Set `ANTHROPIC_API_KEY` in your terminal environment before running the LLM evaluation. Do not commit API keys or other secrets.
-
-Run the LLM evaluation:
+Run the LLM review:
 
 ```bash
 python scripts/run_llm_evaluation.py
 ```
 
-The runner saves raw responses and can reuse valid saved results rather than making duplicate API requests.
+The runner saves raw responses and can reuse valid saved results to avoid unnecessary API requests.
 
-Review the model findings and update `results/predictions.csv` only after determining whether each method identified the specific issue defined in `dataset/labels.csv`.
+The current prediction files contain target-specific scoring results. Review the labels, raw responses, and Checkov findings before relying on the predictions. The scoring rules and mappings require independent review.
 
-Calculate the metrics:
+Calculate metrics from the combined predictions:
 
 ```bash
-python scripts/evaluate.py
+python scripts/evaluate.py --predictions results/predictions_final.csv --out results/metrics_final.json
 ```
 
-Run the tests:
+Run automated tests:
 
 ```bash
 python -m pytest -q
 ```
 
-## Pilot results
+## Preliminary Results
+
+The current exploratory scoring reports the following results on 24 cases:
 
 | Metric | Checkov | LLM |
 |---|---:|---:|
-| Cases scored | 6 | 6 |
-| True positives | 4 | 4 |
+| Cases scored | 24 | 24 |
+| True positives | 12 | 12 |
 | False positives | 0 | 0 |
 | False negatives | 0 | 0 |
-| True negatives | 2 | 2 |
+| True negatives | 12 | 12 |
 | Precision | 1.00 | 1.00 |
 | Recall | 1.00 | 1.00 |
 | F1 score | 1.00 | 1.00 |
 
-Both methods identified all four predefined target issues and did not flag either target-negative control for its target issue.
+**These metrics are not independently validated.** The LLM matching rules and Checkov check-ID mapping were developed after examining the cases and outputs. This creates a risk of confirmation bias and may inflate apparent performance.
 
-These results are specific to this small, deliberately constructed dataset. They do not establish real-world accuracy, superiority, or equivalence between the methods.
+The results describe this scoring procedure on a small, deliberately constructed dataset. They do not establish real-world accuracy, superiority, or equivalence between the methods.
 
 ## Limitations
 
-- Only six synthetic cases were evaluated.
-- There were only two target-negative controls.
-- Each LLM case was evaluated once.
-- Additional findings were not included in the target-specific binary metrics.
-- The LLM used default sampling behavior; deterministic output was not established.
-- Ground-truth labels and manual scoring decisions need independent review.
-- The S3 example tests disabled public-access-block protections; it does not, by itself, prove that a bucket is publicly accessible.
+- Only 24 synthetic cases were evaluated.
+- Each target issue is represented by a limited number of examples.
+- Each LLM case was evaluated once; repeatability was not measured.
+- Default sampling behavior was used; deterministic output was not established.
+- Unrelated security findings are excluded from target-specific metrics.
+- Labels and scoring mappings need independent review.
+- The dataset does not represent the full range of real-world IaC configurations.
+- Disabled S3 public-access-block protections do not, by themselves, establish public bucket access.
 
-## Research integrity
+## Research Integrity and Next Steps
 
-The project preserves raw model responses, labels, scored predictions, and calculated metrics to support review and reproducibility. Manual scoring decisions should be documented, and conclusions should remain proportional to the available evidence.
+Raw model responses, labels, predictions, and calculated metrics are retained to support inspection and reproducibility.
 
-The next stage is to expand the dataset with more diverse configurations, additional negative controls, and independent review of the labels.
+Next steps include independent review of labels and scoring rules, blinded assessment of model findings, additional diverse configurations and negative controls, and repeated LLM runs to evaluate consistency.

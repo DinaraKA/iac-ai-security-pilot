@@ -1,0 +1,17 @@
+{
+  "case_id": "TF007",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-17T19:11:10.861656+00:00",
+  "response_id": "msg_011Cg8Lc9EAL3AMmBUjVBJMB",
+  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"Overly permissive IAM policy (full administrative access)\",\n      \"evidence\": \"Action = \\\"*\\\", Resource = \\\"*\\\" with Effect = \\\"Allow\\\"\",\n      \"severity\": \"critical\",\n      \"confidence\": \"high\"\n    }\n  ]\n}\n```",
+  "parsed_response": {
+    "findings": [
+      {
+        "issue": "Overly permissive IAM policy (full administrative access)",
+        "evidence": "Action = \"*\", Resource = \"*\" with Effect = \"Allow\"",
+        "severity": "critical",
+        "confidence": "high"
+      }
+    ]
+  }
+}

@@ -1,9 +1,9 @@
 {
   "case_id": "K8S001",
   "model": "claude-sonnet-5",
-  "timestamp_utc": "2026-10-15T20:23:17.477934+00:00",
-  "response_id": "msg_011Cg4eVJgp11FjaFg5JeT8d",
-  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"Privileged container\",\n      \"evidence\": \"securityContext.privileged: true\",\n      \"severity\": \"critical\",\n      \"confidence\": \"high\"\n    }\n  ]\n}\n```",
+  "timestamp_utc": "2026-10-17T19:48:46.338889+00:00",
+  "response_id": "msg_011Cg8PUBTUhTik9399s8YCB",
+  "response_text": "{\n  \"findings\": [\n    {\n      \"issue\": \"Privileged container\",\n      \"evidence\": \"securityContext.privileged: true\",\n      \"severity\": \"critical\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"issue\": \"Capability restriction ineffective due to privileged mode\",\n      \"evidence\": \"capabilities.drop: [ALL] combined with privileged: true\",\n      \"severity\": \"medium\",\n      \"confidence\": \"medium\"\n    },\n    {\n      \"issue\": \"Privilege escalation restriction ineffective due to privileged mode\",\n      \"evidence\": \"allowPrivilegeEscalation: false combined with privileged: true\",\n      \"severity\": \"medium\",\n      \"confidence\": \"medium\"\n    }\n  ]\n}",
   "parsed_response": {
     "findings": [
       {
@@ -11,6 +11,18 @@
         "evidence": "securityContext.privileged: true",
         "severity": "critical",
         "confidence": "high"
+      },
+      {
+        "issue": "Capability restriction ineffective due to privileged mode",
+        "evidence": "capabilities.drop: [ALL] combined with privileged: true",
+        "severity": "medium",
+        "confidence": "medium"
+      },
+      {
+        "issue": "Privilege escalation restriction ineffective due to privileged mode",
+        "evidence": "allowPrivilegeEscalation: false combined with privileged: true",
+        "severity": "medium",
+        "confidence": "medium"
       }
     ]
   }

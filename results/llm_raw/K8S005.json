@@ -1,0 +1,23 @@
+{
+  "case_id": "K8S005",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-17T19:16:20.426056+00:00",
+  "response_id": "msg_011Cg8Lzj9hvLQpZmqsuFuJZ",
+  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"Host network namespace sharing\",\n      \"evidence\": \"hostNetwork: true\",\n      \"severity\": \"high\",\n      \"confidence\": \"high\"\n    },\n    {\n      \"issue\": \"Container image not pinned by digest\",\n      \"evidence\": \"image: nginx:1.27\",\n      \"severity\": \"low\",\n      \"confidence\": \"medium\"\n    }\n  ]\n}\n```",
+  "parsed_response": {
+    "findings": [
+      {
+        "issue": "Host network namespace sharing",
+        "evidence": "hostNetwork: true",
+        "severity": "high",
+        "confidence": "high"
+      },
+      {
+        "issue": "Container image not pinned by digest",
+        "evidence": "image: nginx:1.27",
+        "severity": "low",
+        "confidence": "medium"
+      }
+    ]
+  }
+}

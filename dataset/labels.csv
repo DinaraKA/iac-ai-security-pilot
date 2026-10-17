@@ -1,7 +1,25 @@
-case_id,file,framework,expected_issue,vulnerable,notes
-TF001,dataset/examples/tf/tf001_open_sg.tf,terraform,Ingress allows all IPv4 sources on SSH port 22,1,Target issue: unrestricted SSH ingress
-TF002,dataset/examples/tf/tf002_public_s3.tf,terraform,S3 public-access-block protections are disabled,1,Target issue: public access protections explicitly disabled
-TF003,dataset/examples/tf/tf003_secure_sg.tf,terraform,SSH ingress is restricted to a single IPv4 address,0,Negative control for unrestricted SSH ingress
-K8S001,dataset/examples/k8s/k8s001_privileged.yaml,kubernetes,Container runs privileged,1,Target issue: privileged container
-K8S002,dataset/examples/k8s/k8s002_root.yaml,kubernetes,Container explicitly runs as root,1,Target issue: container runs as UID 0
-K8S003,dataset/examples/k8s/k8s003_secure.yaml,kubernetes,No targeted privileged-container or root-container issue is present,0,Negative control for container privilege and root execution
+case_id,file,framework,pair_id,target_id,expected_issue,vulnerable,notes
+TF001,dataset/examples/tf/tf001_open_sg.tf,terraform,TF-SSH,ssh_open_world,SSH ingress permits all IPv4 sources on port 22,1,Existing positive case
+TF003,dataset/examples/tf/tf003_secure_sg.tf,terraform,TF-SSH,ssh_open_world,SSH ingress is restricted to a single IPv4 address,0,Target-negative control for unrestricted SSH
+TF002,dataset/examples/tf/tf002_public_s3.tf,terraform,TF-S3-PAB,s3_pab_disabled,S3 public-access-block protections are disabled,1,Disabled protections do not alone prove public exposure
+TF004,dataset/examples/tf/tf004_secure_s3.tf,terraform,TF-S3-PAB,s3_pab_disabled,S3 public-access-block protections are enabled,0,Target-negative control for disabled protections
+TF005,dataset/examples/tf/tf005_unencrypted_ebs.tf,terraform,TF-EBS,ebs_encryption_disabled,EBS volume encryption is explicitly disabled,1,Target issue is encryption disabled
+TF006,dataset/examples/tf/tf006_encrypted_ebs.tf,terraform,TF-EBS,ebs_encryption_disabled,EBS volume encryption is enabled,0,Target-negative control for disabled encryption
+TF007,dataset/examples/tf/tf007_wildcard_iam.tf,terraform,TF-IAM,iam_wildcard_permissions,IAM policy grants wildcard actions and resources,1,Review policy scope and context
+TF008,dataset/examples/tf/tf008_scoped_iam.tf,terraform,TF-IAM,iam_wildcard_permissions,IAM policy actions and resources are explicitly scoped,0,Target-negative control for wildcard permissions
+TF009,dataset/examples/tf/tf009_public_s3_policy.tf,terraform,TF-S3-POLICY,s3_public_read_policy,S3 bucket policy grants public read access,1,Target issue is an explicit public-read grant
+TF010,dataset/examples/tf/tf010_private_s3_policy.tf,terraform,TF-S3-POLICY,s3_public_read_policy,S3 bucket policy contains no public-read grant,0,Target-negative control for public-read policy
+TF011,dataset/examples/tf/tf011_unencrypted_rds.tf,terraform,TF-RDS,rds_encryption_disabled,RDS storage encryption is explicitly disabled,1,Target issue is storage encryption disabled
+TF012,dataset/examples/tf/tf012_encrypted_rds.tf,terraform,TF-RDS,rds_encryption_disabled,RDS storage encryption is enabled,0,Target-negative control for disabled encryption
+K8S001,dataset/examples/k8s/k8s001_privileged.yaml,kubernetes,K8S-PRIV,privileged_container,Container security context enables privileged mode,1,Existing positive case
+K8S003,dataset/examples/k8s/k8s003_secure.yaml,kubernetes,K8S-PRIV,privileged_container,Container privileged mode is not enabled,0,Target-negative control for privileged mode only
+K8S002,dataset/examples/k8s/k8s002_root.yaml,kubernetes,K8S-ROOT,container_runs_as_root,Container explicitly runs as UID 0,1,Existing positive case
+K8S004,dataset/examples/k8s/k8s004_nonroot.yaml,kubernetes,K8S-ROOT,container_runs_as_root,Container is configured to run as a non-root user,0,Target-negative control for root execution
+K8S005,dataset/examples/k8s/k8s005_hostnetwork.yaml,kubernetes,K8S-HOSTNET,host_network_enabled,Pod enables host networking,1,Target issue is hostNetwork true
+K8S006,dataset/examples/k8s/k8s006_podnetwork.yaml,kubernetes,K8S-HOSTNET,host_network_enabled,Pod does not enable host networking,0,Target-negative control for hostNetwork true
+K8S007,dataset/examples/k8s/k8s007_sysadmin.yaml,kubernetes,K8S-CAPS,excessive_capabilities,Container adds the SYS_ADMIN Linux capability,1,Target issue is adding SYS_ADMIN
+K8S008,dataset/examples/k8s/k8s008_dropcaps.yaml,kubernetes,K8S-CAPS,excessive_capabilities,Container does not add the SYS_ADMIN Linux capability,0,Target-negative control: SYS_ADMIN is not added
+K8S009,dataset/examples/k8s/k8s009_escalation.yaml,kubernetes,K8S-ESC,privilege_escalation_enabled,Container allows privilege escalation,1,Target issue is allowPrivilegeEscalation true
+K8S010,dataset/examples/k8s/k8s010_no_escalation.yaml,kubernetes,K8S-ESC,privilege_escalation_enabled,Container disallows privilege escalation,0,Target-negative control for privilege escalation
+K8S011,dataset/examples/k8s/k8s011_writable_rootfs.yaml,kubernetes,K8S-ROOTFS,writable_root_filesystem,Container root filesystem is writable,1,Target issue is readOnlyRootFilesystem false
+K8S012,dataset/examples/k8s/k8s012_readonly_rootfs.yaml,kubernetes,K8S-ROOTFS,writable_root_filesystem,Container root filesystem is read-only,0,Target-negative control for writable root filesystem

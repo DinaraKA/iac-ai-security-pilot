@@ -1,0 +1,10 @@
+{
+  "case_id": "TF008",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-17T19:11:17.878183+00:00",
+  "response_id": "msg_011Cg8LcJQp8GxXh3XCM5AQA",
+  "response_text": "```json\n{\n  \"findings\": []\n}\n```",
+  "parsed_response": {
+    "findings": []
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "case_id": "K8S008",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-17T19:16:44.388004+00:00",
+  "response_id": "msg_011Cg8M1siS62xSQCgadX6o1",
+  "response_text": "```json\n{\n  \"findings\": [\n    {\n      \"issue\": \"Service account token auto-mount not disabled\",\n      \"evidence\": \"No 'automountServiceAccountToken' field specified in Pod spec (defaults to true)\",\n      \"severity\": \"medium\",\n      \"confidence\": \"medium\"\n    },\n    {\n      \"issue\": \"No explicit seccomp profile configured\",\n      \"evidence\": \"securityContext does not include 'seccompProfile' (e.g., RuntimeDefault)\",\n      \"severity\": \"medium\",\n      \"confidence\": \"low\"\n    },\n    {\n      \"issue\": \"Mutable image tag used instead of digest pinning\",\n      \"evidence\": \"image: nginx:1.27\",\n      \"severity\": \"low\",\n      \"confidence\": \"low\"\n    }\n  ]\n}\n```",
+  "parsed_response": {
+    "findings": [
+      {
+        "issue": "Service account token auto-mount not disabled",
+        "evidence": "No 'automountServiceAccountToken' field specified in Pod spec (defaults to true)",
+        "severity": "medium",
+        "confidence": "medium"
+      },
+      {
+        "issue": "No explicit seccomp profile configured",
+        "evidence": "securityContext does not include 'seccompProfile' (e.g., RuntimeDefault)",
+        "severity": "medium",
+        "confidence": "low"
+      },
+      {
+        "issue": "Mutable image tag used instead of digest pinning",
+        "evidence": "image: nginx:1.27",
+        "severity": "low",
+        "confidence": "low"
+      }
+    ]
+  }
+}

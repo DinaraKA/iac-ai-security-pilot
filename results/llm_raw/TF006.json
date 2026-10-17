@@ -1,0 +1,17 @@
+{
+  "case_id": "TF006",
+  "model": "claude-sonnet-5",
+  "timestamp_utc": "2026-10-17T19:11:08.698380+00:00",
+  "response_id": "msg_011Cg8LbbZf5XUHGNV16TBP6",
+  "response_text": "{\n  \"findings\": [\n    {\n      \"issue\": \"Use of default AWS-managed KMS key for EBS encryption\",\n      \"evidence\": \"encrypted = true with no 'kms_key_id' specified\",\n      \"severity\": \"low\",\n      \"confidence\": \"medium\"\n    }\n  ]\n}",
+  "parsed_response": {
+    "findings": [
+      {
+        "issue": "Use of default AWS-managed KMS key for EBS encryption",
+        "evidence": "encrypted = true with no 'kms_key_id' specified",
+        "severity": "low",
+        "confidence": "medium"
+      }
+    ]
+  }
+}
